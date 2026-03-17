@@ -1,0 +1,67 @@
+/**
+ * Bouvet theme
+ */
+
+@import "../template/mixins";
+@import "../template/settings";
+
+// 🎯 Farger
+$backgroundColor: #F9EAD3;
+$mainColor: #11133C;
+$headingColor: #11133C;
+
+// 🎯 Font
+$mainFont: 'Inter', sans-serif;
+$headingFont: 'Inter', sans-serif;
+
+$headingTextTransform: none;
+
+// 🎯 Generell stil
+section {
+  text-align: left;
+  font-family: $mainFont;
+  color: $mainColor;
+}
+
+// 🎯 Forside (custom layout)
+.frontpage {
+  display: flex !important;
+  padding: 0 !important;
+  height: 100%;
+}
+
+.frontpage .left-panel {
+  width: 40%;
+  background: #11133C;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.frontpage-logo {
+    width: 180px;
+    height: auto;
+}
+
+.frontpage .right-panel {
+  background: $backgroundColor;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.frontpage h1 {
+  font-size: 3.5rem;
+  line-height: 1.1;
+}
+
+.frontpage .subtitle {
+  margin-top: 40px;
+  font-size: 1.5rem;
+}
+
+.frontpage .speaker {
+  margin-top: 0;
+  font-weight: 600;
+}
