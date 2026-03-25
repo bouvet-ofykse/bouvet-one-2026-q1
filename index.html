@@ -42,33 +42,191 @@
 
 				<!-- VANLIGE SLIDES -->
                 <section class="content-slide">
-                        <h1>Slide 1</h1>
 
+					<section class="content-slide">
+						<div class="content">
+							<h1>Slide 1</h1>
+							<h1>U1</h1>
+						</div>
+					</section>
+
+					<section class="content-slide">
+						<div class="content">
+							<h1>Slide 1</h1>
+							<h1>U2</h1>
+						</div>
+					</section>
 
                 </section>
                 <section class="content-slide">
+					<div class="content">
                         <h1>Slide 2</h1>
+					</div>
 
 
                 </section>
-                <section class="content-slide">
-                        <h1>Slide 3</h1>
+				<section class="content-slide">
 
+					<section>
+						<div class="content">
+							<h1>Hvorfor Nais?</h1>
+
+						</div>
+					</section>
+
+					<section>
+						<div class="content">
+							<h1>Fordeler</h1>
+
+							<ul>
+								<li class="fragment">🚀 Developer experience</li>
+								<li class="fragment">🔐 Innebygd sikkerhet</li>
+								<li class="fragment">📦 Standardisering</li>
+								<li class="fragment">📊 Observability out-of-the-box</li>
+								<li class="fragment">☁️ Skalerbarhet</li>
+								<li class="fragment">🤝 Plattform-team og community som kan hjelpe</li>
+								<li class="fragment">💵 Kostnad (?)</li>
+							</ul>
+						</div>
+						<aside class="notes">
+							🚀 Developer experience:
+							<ul>
+								<li>Veldig lav terskel for deploy</li>
+								<li>nais.yaml + push → app i prod</li>
+								<li>Lite behov for å forstå underliggende Kubernetes i detalj</li>
+								<li>Gode defaults → “golden path”</li>
+								<li>Resultat: Utviklere kan fokusere på kode, ikke infra og DevOps-ting</li>
+							</ul>
+
+
+							🔐 Innebygd sikkerhet
+							<ul>
+								<li>Automatisk håndtering av: TLS, autentisering (ofte via OAuth 2.0 / OIDC), secrets (Vault-integrasjon)</li>
+								<li>Strenge standarder → vanskelig å gjøre “dumme ting”</li>
+								<li>Resultat: Mindre sikkerhetsarbeid per team</li>
+							</ul>
+
+							📦 Standardisering
+							<ul>
+								<li>Felles måte å: deploye, konfigurere, monitorere, logge</li>
+								<li>Integrasjoner “bare funker” (f.eks. Kafka, databaser)</li>
+								<li>Resultat: Mindre snowflake-setup</li>
+							</ul>
+
+							📊 Observability out-of-the-box
+							<ul>
+								<li>Logging, metrics og tracing er ferdig satt opp, det eneste du trenger å gjøre er å skru det på</li>
+								<li>Gjør det enkelt å debugge i både test og prod</li>
+								<li>Vi har tatt i bruk Loki, Prometheus og Tempo</li>
+								<li>Kan settes opp egne boards i Grafana</li>
+							</ul>
+
+							☁️ Skalerbarhet (pg reparerbarhet)
+							<ul>
+								<li>Bygger på Kubernetes → autoscaling og robust drift</li>
+								<li>Nyter godt av alle fordeler Kubernetes tilbyr</li>
+								<li>Pod reparerer seg selv, utrullingsstrategier osv..</li>
+								<li>Håndterer mye trafikk uten at team må gjøre mye selv</li>
+							</ul>
+
+							🤝 Plattform-team og community
+							<ul>|
+								<li>NAIS-teamet håndterer: cluster drift, oppgraderinger, sikkerhetspatching, håndtering av teams</li>
+								<li>Resultat: Mindre DevOps-ansvar i hvert team</li>
+							</ul>
+
+							💵 Pris(?)
+							<ul>
+								<li>NAV tar en fast pris per år (symbolsk)</li>
+								<li>NAV får en regning fra Google (GCP)</li>
+								<li>Denne distribueres videre til alle de ulike "kundene"</li>
+								<li>Resultat: Lavere kostnad pga "kvantumsrabatt" hos GCP</li>
+							</ul>
+
+
+						</aside>
+					</section>
+
+					<section>
+						<div class="content">
+							<h1>Ulemper</h1>
+
+							<ul>
+								<li class="fragment">🧩 Mindre fleksibilitet</li>
+								<li class="fragment">🕳️ Abstraksjon skjuler kompleksitet</li>
+								<li class="fragment">🔒 Vendor / platform lock-in</li>
+								<li class="fragment">🐢 Avhengig av plattform-teamet</li>
+								<li class="fragment">📚 Læringskurve (på riktig nivå)</li>
+							</ul>
+						</div>
+
+						<aside class="notes">
+
+							🧩 Mindre fleksibilitet
+							Du må følge “NAIS way”
+							Vanskelig å gjøre ting utenfor standard:
+							custom ingress
+							spesielle nettverksoppsett
+
+							👉 Kan føles begrensende for avanserte behov
+
+							🕳️ Abstraksjon skjuler kompleksitet
+							Du slipper Kubernetes… helt til noe går galt
+							Debugging kan bli tricky hvis du ikke forstår hva som skjer under panseret
+							🔒 Vendor / platform lock-in
+							Tett koblet til NAIS-økosystemet
+							Flytte ut → krever jobb
+							🐢 Avhengig av plattform-teamet
+							Hvis NAIS ikke støtter noe:
+							må du vente
+							eller finne workaround
+							📚 Læringskurve (på riktig nivå)
+							Lett å starte
+							Men:
+							forståelse av policies
+							sikkerhetsmodell
+							YAML-konfig
+
+							…kan fortsatt ta tid
+
+							🧪 Lokal utvikling ≠ produksjon
+							Vanskelig å fullt ut emulere NAIS lokalt
+							Krever ofte mocks eller deploy for testing
+
+
+						</aside>
+					</section>
+
+					<section>
+						⚖️ Kort oppsummert
+
+						NAIS er:
+
+						En plattform som optimaliserer for fart, sikkerhet og standardisering
+
+						Trade-off:
+
+						Mindre kontroll og fleksibilitet
+					</section>
+
+				</section>
+                <section class="content-slide">
+
+					<div class="content">
+						<h1>Demo</h1>
+					</div>
 
                 </section>
                 <section class="content-slide">
-                    <h1>Demo</h1>
-
-
-                </section>
-                <section class="content-slide">
-                    <h1>Spørsmål?</h1>
-                    <div>
-                        <ul>
-                            <li><a href='https://nais.io'>https://nais.io</a></li>
-                            <li><a href='https://bouvet-ofykse.github.io/bouvet-one-2026-q1'>https://bouvet-ofykse.github.io/bouvet-one-2026-q1</a></li>
-                        </ul>
-                    </div>
+					<div class="content">
+						<h1>Spørsmål?</h1>
+							<div>
+								<ul>
+									<li><a href='https://nais.io'>https://nais.io</a></li>
+									<li><a href='https://bouvet-ofykse.github.io/bouvet-one-2026-q1'>https://bouvet-ofykse.github.io/bouvet-one-2026-q1</a></li>
+								</ul>
+							</div>
+					</div>
                 </section>
 
 			</div>

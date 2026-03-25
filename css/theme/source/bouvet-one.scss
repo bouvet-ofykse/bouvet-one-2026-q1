@@ -17,7 +17,6 @@ $headingTextTransform: none;
 
 // 🎯 Generell stil
 .reveal section {
-  padding: 50px;
   color: $mainColor;
   background-color: $backgroundColor;
   text-align: left;
@@ -30,6 +29,10 @@ $headingTextTransform: none;
   align-content: center;
   height: 100%;
   width: 100%;
+}
+
+div .content {
+  margin: 50px
 }
 
 .reveal h1 {
