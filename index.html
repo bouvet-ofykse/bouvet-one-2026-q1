@@ -43,26 +43,18 @@
 				<!-- VANLIGE SLIDES -->
                 <section class="content-slide">
 
-					<section class="content-slide">
-						<div class="content">
-							<h1>Slide 1</h1>
-							<h1>U1</h1>
-						</div>
-					</section>
+                    <div class="content">
+                        <h1>Hva er Nais?</h1>
 
-					<section class="content-slide">
-						<div class="content">
-							<h1>Slide 1</h1>
-							<h1>U2</h1>
-						</div>
-					</section>
+                        <p>TODO: Kort intro til hva Nais er</p>
+                    </div>
 
                 </section>
                 <section class="content-slide">
 					<div class="content">
-                        <h1>Slide 2</h1>
+                        <h1>YAML</h1>
+                        <p>TODO: Sammenligne nais-config med cloud formation-script f.eks?</p>
 					</div>
-
 
                 </section>
 				<section class="content-slide">
@@ -70,6 +62,7 @@
 					<section>
 						<div class="content">
 							<h1>Hvorfor Nais?</h1>
+                            <p>TODO: Bør denne komme litt tidligere?</p>
 
 						</div>
 					</section>
@@ -77,14 +70,13 @@
 					<section>
 						<div class="content">
 							<h1>Fordeler</h1>
-
 							<ul>
 								<li class="fragment">🚀 Developer experience</li>
 								<li class="fragment">🔐 Innebygd sikkerhet</li>
 								<li class="fragment">📦 Standardisering</li>
 								<li class="fragment">📊 Observability out-of-the-box</li>
 								<li class="fragment">☁️ Skalerbarhet</li>
-								<li class="fragment">🤝 Plattform-team og community som kan hjelpe</li>
+								<li class="fragment">🤝 Plattform-team og community</li>
 								<li class="fragment">💵 Kostnad (?)</li>
 							</ul>
 						</div>
@@ -95,55 +87,48 @@
 								<li>nais.yaml + push → app i prod</li>
 								<li>Lite behov for å forstå underliggende Kubernetes i detalj</li>
 								<li>Gode defaults → “golden path”</li>
-								<li>Resultat: Utviklere kan fokusere på kode, ikke infra og DevOps-ting</li>
+                                <li>En god del self service, mye man kan fikse ekelt på egen hånd</li>
+								<li><strong>Utviklere kan fokusere på kode, ikke infra og DevOps-ting</strong></li>
 							</ul>
-
-
 							🔐 Innebygd sikkerhet
 							<ul>
 								<li>Automatisk håndtering av: TLS, autentisering (ofte via OAuth 2.0 / OIDC), secrets (Vault-integrasjon)</li>
 								<li>Strenge standarder → vanskelig å gjøre “dumme ting”</li>
-								<li>Resultat: Mindre sikkerhetsarbeid per team</li>
+                                <li><strong>Mindre sikkerhetsarbeid per team</strong></li>
 							</ul>
-
 							📦 Standardisering
 							<ul>
 								<li>Felles måte å: deploye, konfigurere, monitorere, logge</li>
-								<li>Integrasjoner “bare funker” (f.eks. Kafka, databaser)</li>
-								<li>Resultat: Mindre snowflake-setup</li>
+								<li>Integrasjoner “bare funker” (f.eks. Kafka, databaser, Unleash)</li>
+                                <li><strong>Mindre snowflake-setup</strong></li>
 							</ul>
-
 							📊 Observability out-of-the-box
 							<ul>
 								<li>Logging, metrics og tracing er ferdig satt opp, det eneste du trenger å gjøre er å skru det på</li>
 								<li>Gjør det enkelt å debugge i både test og prod</li>
 								<li>Vi har tatt i bruk Loki, Prometheus og Tempo</li>
 								<li>Kan settes opp egne boards i Grafana</li>
+                                <li><strong>Det aller meste er satt opp, bare skru det på</strong></li>
 							</ul>
-
-							☁️ Skalerbarhet (pg reparerbarhet)
+							☁️ Skalerbarhet (og reparerbarhet)
 							<ul>
 								<li>Bygger på Kubernetes → autoscaling og robust drift</li>
-								<li>Nyter godt av alle fordeler Kubernetes tilbyr</li>
-								<li>Pod reparerer seg selv, utrullingsstrategier osv..</li>
+								<li>Podder reparerer seg selv, utrullingsstrategier, load balancing osv..</li>
 								<li>Håndterer mye trafikk uten at team må gjøre mye selv</li>
+                                <li><strong>Nyter godt av alle fordeler Kubernetes tilbyr</strong></li>
 							</ul>
-
 							🤝 Plattform-team og community
-							<ul>|
-								<li>NAIS-teamet håndterer: cluster drift, oppgraderinger, sikkerhetspatching, håndtering av teams</li>
-								<li>Resultat: Mindre DevOps-ansvar i hvert team</li>
+							<ul>
+								<li>NAIS-teamet håndterer: cluster drift, oppgraderinger, sikkerhetspatching, håndtering av namespaces og teams</li>
+                                <li><strong>Resultat: Mindre DevOps-ansvar i hvert team</strong></li>
 							</ul>
-
 							💵 Pris(?)
 							<ul>
 								<li>NAV tar en fast pris per år (symbolsk)</li>
 								<li>NAV får en regning fra Google (GCP)</li>
 								<li>Denne distribueres videre til alle de ulike "kundene"</li>
-								<li>Resultat: Lavere kostnad pga "kvantumsrabatt" hos GCP</li>
+                                <li><strong>Resultat: Lavere kostnad pga "kvantumsrabatt" hos GCP</strong></li>
 							</ul>
-
-
 						</aside>
 					</section>
 
@@ -153,60 +138,84 @@
 
 							<ul>
 								<li class="fragment">🧩 Mindre fleksibilitet</li>
-								<li class="fragment">🕳️ Abstraksjon skjuler kompleksitet</li>
+								<li class="fragment">🪄️ Abstraksjon skjuler kompleksitet</li>
 								<li class="fragment">🔒 Vendor / platform lock-in</li>
 								<li class="fragment">🐢 Avhengig av plattform-teamet</li>
-								<li class="fragment">📚 Læringskurve (på riktig nivå)</li>
+								<li class="fragment">📚 Læringskurve</li>
+								<li class="fragment">🧪 Lokal utvikling ≠ produksjon</li>
 							</ul>
 						</div>
 
 						<aside class="notes">
-
 							🧩 Mindre fleksibilitet
-							Du må følge “NAIS way”
-							Vanskelig å gjøre ting utenfor standard:
-							custom ingress
-							spesielle nettverksoppsett
+                            <ul>
+                                <li>Du må følge “NAIS way”</li>
+                                <li>Mer komplisert å gjøre ting som går utenfor standard/den opptråkkede sti</li>
+                                <li>For eksempel mer komplekse nettverksoppsett</li>
+                                <li><strong>Resultat: Kan føles begrensende for avanserte behov</strong></li>
+                            </ul>
+                            🪄 Abstraksjon skjuler kompleksitet
+                            <ul>
+                                <li>Du slipper å deale med Kubernetes… helt til noe går galt</li>
+                                <li>Debugging kan bli tricky hvis du ikke forstår hva som skjer under panseret</li>
+                                <li><strong>Bør ha noe fundamental kjennskap til hvordan et cluster fungerer</strong></li>
+                            </ul>
 
-							👉 Kan føles begrensende for avanserte behov
+                            🔒 Vendor / platform lock-in
+                            <ul>
+                                <li>Tett koblet til NAIS-økosystemet</li>
+                                <li>Flytte ut → krever jobb</li>
+                                <li>MEN: Du har hvertfall containerisert appen :)</li>
+                                <li>Også locked til GCP (hvertfall foreløpig)</li>
+                                <li>Tror Nais jobber med eller tenker på exit-strategi (som alle andre)</li>
+                            </ul>
 
-							🕳️ Abstraksjon skjuler kompleksitet
-							Du slipper Kubernetes… helt til noe går galt
-							Debugging kan bli tricky hvis du ikke forstår hva som skjer under panseret
-							🔒 Vendor / platform lock-in
-							Tett koblet til NAIS-økosystemet
-							Flytte ut → krever jobb
 							🐢 Avhengig av plattform-teamet
-							Hvis NAIS ikke støtter noe:
-							må du vente
-							eller finne workaround
-							📚 Læringskurve (på riktig nivå)
-							Lett å starte
-							Men:
-							forståelse av policies
-							sikkerhetsmodell
-							YAML-konfig
+                            <ul>
+                                <li>Hvis NAIS ikke støtter noe må du vente eller finne andre/egne løsninger</li>
+                                <li>Noe funksjonalitet eller integrasjoner kan bli lagt til om ønsket er stort nok</li>
+                            </ul>
 
-							…kan fortsatt ta tid
+							📚 Læringskurve
+                            <ul>
+                                <li>Lett å komme igang</li>
+                                <li>MEN: du må forsatt ha innsikt i: </li>
+                                <li>cloud native arkitektur</li>
+                                <li>(litt) yaml og infrastructure as code</li>
+                                <li>Conteinerisering</li>
+                            </ul>
 
-							🧪 Lokal utvikling ≠ produksjon
-							Vanskelig å fullt ut emulere NAIS lokalt
-							Krever ofte mocks eller deploy for testing
-
+                            🧪 Lokal utvikling ≠ produksjon
+                            <ul>
+                                <li>Vanskelig å fullt ut emulere NAIS lokalt</li>
+                                <li>Krever ofte mocks eller deploy for testing</li>
+                                <li>Eksempel: databaser, buckets osv</li>
+                            </ul>
 
 						</aside>
 					</section>
 
 					<section>
-						⚖️ Kort oppsummert
+                        <div class="content">
+                            <h1>⚖️ Kort oppsummert</h1>
+                            <ul>
+                                <li>En plattform som optimaliserer for fart, sikkerhet og standardisering</li>
+                                <li>Trade-off: Mindre kontroll og fleksibilitet</li>
+                            </ul>
+                        </div>
+                        <aside class="notes">
+                            <ul>
+                                <li>Komme raskt i gang</li>
+                                <li>Slippe å deale med mye DevOps (eller vente på noen fra DevOps...)</li>
+                                <li>Unngå sikkerhetshull</li>
+                                <li>Mer koding, mindre knoting</li>
+                            </ul>
 
-						NAIS er:
+                            <ul>
+                                <li>Mister noe fleksisbilitet og gir fra deg kontroll</li>
+                            </ul>
+                        </aside>
 
-						En plattform som optimaliserer for fart, sikkerhet og standardisering
-
-						Trade-off:
-
-						Mindre kontroll og fleksibilitet
 					</section>
 
 				</section>
@@ -214,6 +223,10 @@
 
 					<div class="content">
 						<h1>Demo</h1>
+                        <ul>
+                            <li>Nais console</li>
+                            <li>Nais cli?</li>
+                        </ul>
 					</div>
 
                 </section>

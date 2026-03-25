@@ -17,6 +17,7 @@ $headingTextTransform: none;
 
 // 🎯 Generell stil
 .reveal section {
+  font-family: $mainFont;
   color: $mainColor;
   background-color: $backgroundColor;
   text-align: left;
@@ -54,7 +55,7 @@ div .content {
 
 .reveal p,
 .reveal li {
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   line-height: 1.6;
 }
 

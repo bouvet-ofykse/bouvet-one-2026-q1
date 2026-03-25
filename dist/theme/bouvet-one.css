@@ -3,7 +3,7 @@
  * Bouvet theme
  */
 .reveal section {
-  padding: 50px;
+  font-family: "Inter", sans-serif;
   color: #11133C;
   background-color: #F9EAD3;
   text-align: left;
@@ -16,6 +16,10 @@
   align-content: center;
   height: 100%;
   width: 100%;
+}
+
+div .content {
+  margin: 50px;
 }
 
 .reveal h1 {
@@ -37,7 +41,7 @@
 
 .reveal p,
 .reveal li {
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   line-height: 1.6;
 }
 
