@@ -42,7 +42,7 @@
                         <ul>
                             <li>Vi er Rasmus og Olav, utviklere, ikke devopsere</li>
                             <li>Vi begynte hos Atil i april, hadde en applikasjon kjørende i AWS Fargate</li>
-                            <li>Flyttet til NAIS i september 2025, fjernet 1400 linjer med yaml</li>
+                            <li>Flyttet til NAIS i september 2025</li>
                         </ul>
                     </aside>
 				</section>
@@ -52,17 +52,14 @@
                     <section>
                         <div class="content">
                         <h1>Hva er NAIS</h1>
-                        <p class="fragment">NAIS er en opinionated PaaS bygget oppå Kubernetes.</p>
-                        <p class="fragment">Bygget av NAV</p>
-                        <p class="fragment">Den gir deg en standardisert måte å bygge, deploye og kjøre applikasjoner på – uten at hvert team må løse alle plattformproblemene selv.</p>
+                        <p>NAIS er en opinionated PaaS bygget oppå Kubernetes.</p>
+                        <p>Bygget av NAV</p>
+                        <p>Den gir deg en standardisert måte å bygge, deploye og kjøre applikasjoner på – uten at hvert team må løse alle plattformproblemene selv.</p>
 
                         <aside class="notes">
                             <ul>
-                                <li>Hvordan håndterer vi secrets?</li>
-                                <li>Hvordan setter vi opp tilgang mellom tjenester?</li>
-                                <li>Hvordan gjør vi logging og metrics?</li>
-                                <li>Hvordan sikrer vi least privilege?</li>
-                                <li>Hvordan eksponerer vi apper trygt?</li>
+                                <li>NAV ønsket å standardisere sine applikasjoner kjørende i sky</li>
+                                <li>Fant ut at det de hadde laget var kult og ønsket å dele med andre offentlige instutisjoner i Norge</li>
                             </ul>
                         </aside>
                         </div>
@@ -76,10 +73,13 @@
                         <p class="fragment">Sikkerhet skal være default riktig</p>
                         <p class="fragment">Standardisering > fleksibilitet</p>
                         <aside class="notes">
-                            Samme deploy-mønster
-                            Samme logging
-                            Samme metrics
-                            Plattformen optimaliserer for organisasjonen, ikke for hvert enkelt team.
+                            <ul>
+                                <li>Samme deploy-mønster</li>
+                                <li>Samme logging</li>
+                                <li>Samme metrics</li>
+                                <li>Samme secretshåndtering</li>
+                                <li>Plattformen optimaliserer for organisasjonen, ikke for hvert enkelt team.</li>
+                            </ul>
                         </aside>
                         </div>
                     </section>
@@ -287,6 +287,14 @@ sqlInstances:
                             </div>
 
                         </div>
+                            <aside class="notes">
+                                <ul>
+                                    <li>Det vi ser til venstre er det som skal til for å kjøre ut en applikasjon i NAIS</li>>
+                                    <li>Du sier "kjør denne appen i NAIS, med disse egenskapene" og NAIS oversetter det til en hel haug med kubernetes og gcp-ressurser</li>
+                                    <li>Tilsvarende i Kubernetes + Cloud vil måtte håndtere</li>
+                                    <li>Service: Loadbalancer, intern DNS</li>
+                                </ul>
+                            </aside>
                         </div>
                     </section>
                     <section data-transition="fade" data-background-transition="none">
@@ -361,6 +369,7 @@ sqlInstances:
                                 <li>Integreres mot plattformens observability</li>
                                 <li>Connection string wiring</li>
                                 <li>Hele poenget er at du ikke trenger å vite hvordan</li>
+                                <li>Vi har tilsvarende brukt 3 yaml-linjer for å sette opp autentisering via Entra</li>
                             </ul>
                         </aside>
                         </div>
