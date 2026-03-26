@@ -4,12 +4,12 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 		<title>Bouvet One 2026 Q1</title>
 
         <link rel="stylesheet" href="./dist/reset.css">
         <link rel="stylesheet" href="./dist/reveal.css">
         <link rel="stylesheet" href="./dist/theme/bouvet-one.css">
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 
 		<!-- Theme used for syntax highlighted code -->
@@ -38,27 +38,195 @@
 							Olav Fykse
 						</p>
 					</div>
+                    <aside class="notes">
+                        <ul>
+                            <li>Vi er Rasmus og Olav, utviklere, ikke devopsere</li>
+                            <li>Vi begynte hos Atil i april, hadde en applikasjon kjørende i AWS Fargate</li>
+                            <li>Flyttet til NAIS i september 2025, fjernet 1400 linjer med yaml</li>
+                        </ul>
+                    </aside>
 				</section>
 
 				<!-- VANLIGE SLIDES -->
                 <section class="content-slide">
+                    <section>
+                        <div class="content">
+                        <h1>Hva er NAIS</h1>
+                        <p class="fragment">NAIS er en opinionated PaaS bygget oppå Kubernetes.</p>
+                        <p class="fragment">Bygget av NAV</p>
+                        <p class="fragment">Den gir deg en standardisert måte å bygge, deploye og kjøre applikasjoner på – uten at hvert team må løse alle plattformproblemene selv.</p>
 
-                    <div class="content">
-                        <h1>Hva er Nais?</h1>
+                        <aside class="notes">
+                            <ul>
+                                <li>Hvordan håndterer vi secrets?</li>
+                                <li>Hvordan setter vi opp tilgang mellom tjenester?</li>
+                                <li>Hvordan gjør vi logging og metrics?</li>
+                                <li>Hvordan sikrer vi least privilege?</li>
+                                <li>Hvordan eksponerer vi apper trygt?</li>
+                            </ul>
+                        </aside>
+                        </div>
+                    </section>
+                    <section>
 
-                        <p>TODO: Kort intro til hva Nais er</p>
-                    </div>
+                        <div class="content">
+                        <h2>Hva er en opinionated PaaS?</h2>
+                        <p>En plattform som har tatt valg for deg</p>
+                        <p class="fragment">Du skal ikke måtte kunne Kubernetes</p>
+                        <p class="fragment">Sikkerhet skal være default riktig</p>
+                        <p class="fragment">Standardisering > fleksibilitet</p>
+                        <aside class="notes">
+                            Samme deploy-mønster
+                            Samme logging
+                            Samme metrics
+                            Plattformen optimaliserer for organisasjonen, ikke for hvert enkelt team.
+                        </aside>
+                        </div>
+                    </section>
+
 
                 </section>
                 <section class="content-slide">
-					<div class="content">
-                        <h1>YAML</h1>
-                        <p>TODO: Sammenligne nais-config med cloud formation-script f.eks?</p>
-					</div>
+                    <section>
 
+                        <div class="content">
+                        <h2>En app i NAIS</h2>
+
+                        <div style="display: flex; gap: 40px; align-items: flex-start;">
+
+                            <!-- NAIS -->
+                            <div style="flex: 1;">
+                                <h3>NAIS</h3>
+                                <pre><code class="yaml">
+apiVersion: nais.io/v1alpha1
+kind: Application
+spec:
+image: my-api:1.0.0
+port: 8080
+
+replicas:
+min: 2
+max: 5
+
+accessPolicy:
+inbound:
+  - application: web
+
+prometheus:
+enabled: true
+
+gcp:
+sqlInstances:
+  - name: db
+  </code></pre>
+                            </div>
+
+                            <!-- Arrow -->
+                            <div style="font-size: 60px; align-self: center;">
+                                →
+                            </div>
+
+                            <!-- Kubernetes -->
+                            <div style="flex: 1;">
+                                <h3>Kubernetes + Cloud</h3>
+
+                                <ul style="list-style: none; padding: 0;">
+                                    <li class="fragment">Deployment</li>
+                                    <li class="fragment">Service</li>
+                                    <li class="fragment">Ingress + TLS</li>
+                                    <li class="fragment">HPA (autoscaling)</li>
+                                    <li class="fragment">NetworkPolicy</li>
+                                    <li class="fragment">ServiceAccount + IAM</li>
+                                    <li class="fragment">Secrets / Vault</li>
+                                    <li class="fragment">Prometheus config</li>
+                                    <li class="fragment">Logging pipeline</li>
+                                    <li class="fragment"> Cloud SQL + users + certs</li>
+                                    <li class="fragment">Cloud SQL proxy</li>
+                                    <li class="fragment">Observability stack</li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        </div>
+                    </section>
+                    <section data-transition="fade" data-background-transition="none">
+
+                        <div class="content">
+                        <h2>En app i NAIS</h2>
+
+                        <div style="display: flex; gap: 40px; align-items: flex-start;">
+
+                            <!-- NAIS -->
+                            <div style="flex: 1;">
+                                <h3>NAIS</h3>
+                                <pre><code class="yaml" data-line-numbers="19-21">
+apiVersion: nais.io/v1alpha1
+kind: Application
+spec:
+image: my-api:1.0.0
+port: 8080
+
+replicas:
+min: 2
+max: 5
+
+accessPolicy:
+inbound:
+  - application: web
+
+prometheus:
+enabled: true
+
+gcp:
+sqlInstances:
+  - name: db
+  </code></pre>
+                            </div>
+
+                            <!-- Arrow -->
+                            <div style="font-size: 60px; align-self: center;">
+                                →
+                            </div>
+
+                            <!-- Kubernetes -->
+                            <div style="flex: 1;">
+                                <h3>Kubernetes + Cloud</h3>
+
+                                <ul style="list-style: none; padding: 0;">
+                                    <li>Deployment</li>
+                                    <li>Service</li>
+                                    <li>Ingress + TLS</li>
+                                    <li>HPA (autoscaling)</li>
+                                    <li>NetworkPolicy</li>
+                                    <li>ServiceAccount + IAM</li>
+                                    <li>Secrets / Vault</li>
+                                    <li>Prometheus config</li>
+                                    <li>Logging pipeline</li>
+                                    <li> Cloud SQL + users + certs</li>
+                                    <li>Cloud SQL proxy</li>
+                                    <li>Observability stack</li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <aside class="notes">
+                            <ul>
+                                <li>Kobler mot Cloud SQL instance (Terraform / console)</li>
+                                <li>Oppretter / provisonerer database</li>
+                                <li>Lage user</li>
+                                <li>Setter opp Workload Identity, gir app tilgang til Cloud SQL</li>
+                                <li>Setter opp nettverk (VPC, firewall)</li>
+                                <li>sette opp SSL certs og håndterer disse</li>
+                                <li>håndtere secrets</li>
+                                <li>Integreres mot plattformens observability</li>
+                                <li>Connection string wiring</li>
+                                <li>Hele poenget er at du ikke trenger å vite hvordan</li>
+                            </ul>
+                        </aside>
+                        </div>
+                    </section>
                 </section>
-				<section class="content-slide">
-
+                <section class="content-slide">
 					<section>
 						<div class="content">
 							<h1>Hvorfor Nais?</h1>
