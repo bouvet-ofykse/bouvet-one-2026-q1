@@ -283,11 +283,9 @@ sqlInstances:
                                     <li class="fragment">NetworkPolicy</li>
                                     <li class="fragment">ServiceAccount + IAM</li>
                                     <li class="fragment">Secrets / Vault</li>
-                                    <li class="fragment">Prometheus config</li>
-                                    <li class="fragment">Logging pipeline</li>
+                                    <li class="fragment">Observability stack</li>
                                     <li class="fragment"> Cloud SQL + users + certs</li>
                                     <li class="fragment">Cloud SQL proxy</li>
-                                    <li class="fragment">Observability stack</li>
                                 </ul>
                             </div>
 
@@ -297,7 +295,16 @@ sqlInstances:
                                     <li>Det vi ser til venstre er det som skal til for å kjøre ut en applikasjon i NAIS</li>
                                     <li>Du sier "kjør denne appen i NAIS, med disse egenskapene" og NAIS oversetter det til en hel haug med kubernetes og gcp-ressurser</li>
                                     <li>Tilsvarende i Kubernetes + Cloud vil måtte håndtere</li>
+                                    <li>Deployment: Det som kjører containeren din, rolling updates, probes</li>
                                     <li>Service: Loadbalancer, intern DNS</li>
+                                    <li>Ingress, automatisk sertifikat, ekstern url</li>
+                                    <li>HPA: HorizontalPodAutoscaler, kan overstyres</li>
+                                    <li>NetworkPolicy: zero trust</li>
+                                    <li>ServiceAccount - kommunikasjon mot GCP</li>
+                                    <li>Secrets: støtter vault/gcp secrets, egen frontend for det i console, env vars</li>
+                                    <li>Observability stack: metrics, logging, dashboards, alerts</li>
+                                    <li>Cloud SQL: Kobler seg på Cloud SQL instance, oppretter databaser osv</li>
+                                    <li>Cloud SQL Proxy: Injecter env vars, sørger for ip whitelists, ssl</li>
                                 </ul>
                             </aside>
                         </div>
